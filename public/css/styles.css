@@ -237,3 +237,174 @@ footer .copyright {
   font-size: 14px;
   color: #666;
 }
+
+/******* Mobile Responsive Styles ***************/
+@media screen and (max-width: 768px) {
+  /* Remove background image on mobile */
+  body {
+    background-image: none;
+    background-color: #ffffff;
+    padding-top: 0;
+  }
+
+  /* Make wrapper full width with minimal padding */
+  #wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  /* Keep header on one line but smaller */
+  #top-header {
+    padding: 15px 0;
+  }
+
+  #top-header .siteName {
+    font-size: 20px;
+  }
+
+  #top-header #tools a {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  /* Keep navigation horizontal but adjust sizing */
+  nav ul li a {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  /* Adjust main content */
+  main {
+    padding: 15px 0;
+  }
+
+  main h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Hero section - remove overlay, show content below */
+  .hero-section {
+    margin-bottom: 25px;
+  }
+
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-content {
+    left: 15px;
+    padding: 15px 20px;
+    max-width: 200px;
+  }
+
+  .hero-title {
+    font-size: 20px;
+  }
+
+  .hero-content ul li {
+    font-size: 14px;
+  }
+
+  .hero-content .cta-button {
+    padding: 8px 30px;
+    font-size: 14px;
+  }
+
+  /* Single column layout */
+  .two-column-section {
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 25px;
+  }
+
+  /* Reverse order: Reviews first, then Upgrades */
+  .column:first-child {
+    order: 2;
+  }
+
+  .column:last-child {
+    order: 1;
+  }
+
+  .column h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  /* Upgrades grid */
+  .upgrades-grid {
+    gap: 10px;
+  }
+
+  .upgrade-item {
+    padding: 10px;
+  }
+
+  .upgrade-item img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .upgrade-item p {
+    font-size: 11px;
+  }
+
+  /* Reviews list */
+  .reviews-list {
+    padding-left: 20px;
+  }
+
+  .reviews-list li {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 25px;
+    padding-top: 15px;
+  }
+
+  footer .copyright {
+    font-size: 11px;
+  }
+}
+
+/* Extra small devices (phones in portrait, less than 576px) */
+@media screen and (max-width: 575px) {
+  #top-header .siteName {
+    font-size: 18px;
+  }
+
+  nav ul li a {
+    padding: 10px 5px;
+    font-size: 12px;
+  }
+
+  main h1 {
+    font-size: 18px;
+  }
+
+  .hero-title {
+    font-size: 18px;
+  }
+
+  .hero-content ul li {
+    font-size: 13px;
+  }
+
+  /* Keep upgrades 2 columns on small screens */
+  .upgrade-item img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .upgrade-item p {
+    font-size: 10px;
+  }
+}
