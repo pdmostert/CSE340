@@ -1,15 +1,18 @@
-
-
+<%#
+    Render a classification page showing a heading and an inventory grid for a
+    vehicle classification (for example: Trucks, SUVs, Sedans).
+%>
 
 <% if (title) { %>
-<h1><%= title %></h1>
+  <!-- Page heading provided by the controller -->
+  <h1><%= title %></h1>
 <% } else {
+  /* If no title was provided, redirect back to the home page. This keeps the
+     view from rendering when required context isn't available. */
   res.redirect('/')
 } %>
 
+<%# Optional place for flash/messages if needed: messages() %>
 
-<%# messages() %>
-
-
-
+<!-- Inject the pre-built inventory grid (contains <ul id="inv-display"> or a notice) -->
 <%- grid %>

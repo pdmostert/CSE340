@@ -325,6 +325,14 @@ footer .copyright {
   color: #92400e;
 }
 
+
+  .error-page { padding: 1rem 0; }
+  .error-page h1 { color: var(--primary-color, #0A58A5); margin-bottom: 0.5rem; }
+  .error-message p { background:#fff7ed; border:1px solid #ffedd5; padding:0.8rem; border-radius:6px; color:#92400e; }
+  .error-actions { margin-top: 1rem; }
+  .error-actions .button { background:var(--primary-color, #0A58A5); color:#fff; padding:0.5rem 0.85rem; border-radius:4px; text-decoration:none; }
+  .error-actions .button:hover { opacity:0.95; }
+
 /* Responsive tweaks */
 
 /******* Mobile Responsive Styles (768px and below) ***************/
