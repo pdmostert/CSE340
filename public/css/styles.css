@@ -232,12 +232,117 @@ footer .copyright {
   color: #666;
 }
 
+
+
+/* Simple, responsive inventory grid */
+
+#inv-display {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  align-items: start;
+}
+
+/* Card */
+#inv-display li {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+#inv-display li:hover,
+#inv-display li:focus-within {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Thumbnail image — fill card width, maintain aspect */
+#inv-display img {
+  display: block;
+  width: 100%;
+  /* Make image height responsive without extra media queries */
+  height: clamp(140px, 22vw, 180px);
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+}
+
+/* Name + price area */
+.namePrice {
+  padding: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  justify-content: space-between;
+  flex: 1 1 auto;
+}
+
+.namePrice hr {
+  border: none;
+  border-top: 1px solid #f1f5f9;
+  margin: 0.4rem 0;
+}
+
+.namePrice h2 {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.namePrice h2 a {
+  color: #0f172a;
+  text-decoration: none;
+}
+.namePrice h2 a:hover,
+.namePrice h2 a:focus {
+  text-decoration: underline;
+}
+
+/* Price badge */
+.namePrice span {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-weight: 700;
+  color: #065f46;
+  background: rgba(6,95,70,0.06);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* Notice when no vehicles found */
+#inv-display + .notice,
+.notice {
+  padding: 1rem;
+  background: #fff7ed;
+  border: 1px solid #ffedd5;
+  border-radius: 6px;
+  color: #92400e;
+}
+
+/* Responsive tweaks */
+
 /******* Mobile Responsive Styles (768px and below) ***************/
 @media screen and (max-width: 768px) {
   body {
     background-image: none;
     background-color: #ffffff;
     padding-top: 0;
+  }
+
+  /* Inventory grid: single column on narrow screens */
+  #inv-display {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .namePrice {
+    padding: 0.6rem;
   }
 
   #wrapper {
