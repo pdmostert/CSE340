@@ -58,6 +58,40 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+
+/* ******************************
+  *  Build the vehicle view HTML
+  * **************************** */ 
+Util.buildVehicleView = async function(data){
+  let vehicleView = ''
+  if(data) {
+    vehicleView += '<div id="vehicle-detail">'
+    
+    // Image section
+    vehicleView += '<div class="vehicle-image">'
+    vehicleView += '<img src="' + data.inv_image + '" alt="' + data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model + '">'
+    vehicleView += '</div>'
+    
+    // Details section
+    vehicleView += '<div class="vehicle-info">'
+    vehicleView += '<h2>' + data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model + '</h2>'
+    vehicleView += '<h3 class="vehicle-price">$' + new Intl.NumberFormat('en-US').format(data.inv_price) + '</h3>'
+    
+    vehicleView += '<div class="vehicle-details">'
+    vehicleView += '<p><strong>Mileage:</strong> ' + new Intl.NumberFormat('en-US').format(data.inv_miles) + ' miles</p>'
+    vehicleView += '<p><strong>Color:</strong> ' + data.inv_color + '</p>'
+    vehicleView += '<p><strong>Description:</strong> ' + data.inv_description + '</p>'
+    vehicleView += '</div>'
+    
+    vehicleView += '</div>'
+    vehicleView += '</div>'
+  } else {
+    vehicleView += '<p class="notice">Sorry, no matching vehicle could be found.</p>'
+  }
+  return vehicleView
+}
+
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

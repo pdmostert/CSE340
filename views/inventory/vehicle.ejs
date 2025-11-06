@@ -1,0 +1,17 @@
+<%#
+    Render a vehical detail page showing a heading and an individual vehical view.
+%>
+
+<% if (title) { %>
+  <!-- Page heading provided by the controller -->
+  <h1><%= title %></h1>
+<% } else {
+  /* If no title was provided, redirect back to the home page. This keeps the
+     view from rendering when required context isn't available. */
+  res.redirect('/')
+} %>
+
+
+<%# Optional place for flash/messages if needed: messages() %>
+
+<%- vehicleView %>
