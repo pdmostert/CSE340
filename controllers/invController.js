@@ -37,5 +37,15 @@ invCont.buildByInventoryId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+* Build Intentional 500 Error
+* ************************** */
+invCont.buildError = async function (req, res, next) {
+  // Throw an intentional error to trigger error middleware
+  throw new Error("Intentional 500 error triggered for testing purposes")
+}
+
+
+
 
 module.exports = invCont
