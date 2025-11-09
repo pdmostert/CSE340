@@ -3,15 +3,23 @@
 <h1><%= title %></h1>
 <% } else { /* If no title was provided, redirect back to the home page. This
 keeps the view from rendering when required context isn't available. */
-res.redirect('/') } %> <%- messages() %>
+res.redirect('/') } %> 
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
 
 <div id="registerFormContainer">
   <div>
     <h2>Register an Account</h2>
     <p>
-      All fields are required and the password must be at least 12 characters
-      long and contain at least 1 uppercase letter, 1 number, and 1 special
-      character.
+      All fields are required
     </p>
   </div>
   <form id="registerForm" action="/account/register" method="post">
@@ -44,7 +52,14 @@ res.redirect('/') } %> <%- messages() %>
         name="account_password"
         type="password"
         required
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+        title="Password must be at least 12 characters long and contain at least 1 uppercase letter, 1 number, and 1 special character."
       >
+    </div>
+    <div>
+      <p>
+        Passwords must be at least 12 characters and contain at least 1 uppercase letter, 1 number, and 1 special character.
+      </p>
     </div>
     <button type="submit">Register</button>
   </form>
