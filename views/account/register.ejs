@@ -1,0 +1,53 @@
+<% if (title) { %>
+<!-- Page heading provided by the controller -->
+<h1><%= title %></h1>
+<% } else { /* If no title was provided, redirect back to the home page. This
+keeps the view from rendering when required context isn't available. */
+res.redirect('/') } %> <%- messages() %>
+
+<div id="registerFormContainer">
+  <div>
+    <h2>Register an Account</h2>
+    <p>
+      All fields are required and the password must be at least 12 characters
+      long and contain at least 1 uppercase letter, 1 number, and 1 special
+      character.
+    </p>
+  </div>
+  <form id="registerForm" action="/account/register" method="post">
+    <div>
+      <label for="account_firstname">First Name</label>
+      <input
+        id="account_firstname"
+        type="text"
+        name="account_firstname"
+        required
+      >
+    </div>
+    <div>
+      <label for="account_lastname">Last Name</label>
+      <input
+        id="account_lastname"
+        type="text"
+        name="account_lastname"
+        required
+      >
+    </div>
+    <div>
+      <label for="account_email">Email</label>
+      <input id="account_email" type="email" name="account_email" required >
+    </div>
+    <div>
+      <label for="account_password">Password</label>
+      <input
+        id="account_password"
+        name="account_password"
+        type="password"
+        required
+      >
+    </div>
+    <button type="submit">Register</button>
+  </form>
+
+  <!-- <p id="login">Already have an account ?<a href="/account/login">Login</a></p> -->
+</div>

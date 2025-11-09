@@ -1,0 +1,27 @@
+<% if (title) { %>
+<!-- Page heading provided by the controller -->
+<h1><%= title %></h1>
+<% } else { /* If no title was provided, redirect back to the home page. This
+keeps the view from rendering when required context isn't available. */
+res.redirect('/') } %> <%- messages() %>
+
+<div id="loginFormContainer">
+  <form id="loginForm" action="/account/login" method="post">
+    <div>
+      <label for="account_email">Email</label>
+      <input id="account_email" type="email" name="account_email" required >
+    </div>
+    <div>
+      <label for="account_password">Password</label>
+      <input
+        id="account_password"
+        name="account_password"
+        type="password"
+        required
+      >
+    </div>
+    <button type="submit">Login</button>
+  </form>
+
+  <p id="register">No account ?<a href="/account/register">Sign-up</a></p>
+</div>

@@ -603,3 +603,94 @@ footer .copyright {
     font-size: 10px;
   }
 }
+
+/* Login / Auth form / Registration Form */
+#loginFormContainer,
+#registerFormContainer {
+  max-width: 380px;
+  margin: 48px auto;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(10, 88, 165, 0.12);
+}
+
+#loginForm,
+#registerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: stretch;
+}
+
+#loginForm div,
+#registerForm div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#loginForm label,
+#registerForm label {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#loginForm input[type="email"],
+#loginForm input[type="password"],
+#loginForm input[type="text"],
+#registerForm input[type="email"],
+#registerForm input[type="password"],
+#registerForm input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Focus state */
+#loginForm input:focus {
+  box-shadow: 0 0 0 4px rgba(10, 88, 165, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+#loginForm button[type="submit"],
+#registerForm button[type="submit"] {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 160ms ease, transform 120ms ease;
+  align-self: center;
+  min-width: 140px;
+}
+
+#loginForm button[type="submit"]:hover,
+#registerForm button[type="submit"]:hover {
+  background: rgb(144, 235, 136);
+  color: black;
+  transform: translateY(-1px);
+}
+
+#loginFormContainer #register {
+  margin: 6px 0 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+#loginFormContainer #register a {
+  color: #ffffff;
+  text-decoration: underline;
+  margin-left: 6px;
+  font-weight: 600;
+}
