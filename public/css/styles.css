@@ -643,7 +643,10 @@ footer .copyright {
 #loginForm input[type="text"],
 #registerForm input[type="email"],
 #registerForm input[type="password"],
-#registerForm input[type="text"] {
+#registerForm input[type="text"],
+#registerForm input[type="number"],
+#registerForm textarea,
+#registerForm select {
   width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
@@ -652,10 +655,19 @@ footer .copyright {
   color: #0f172a;
   font-size: 1rem;
   outline: none;
+  font-family: Arial, sans-serif;
+}
+
+#registerForm textarea {
+  min-height: 80px;
+  resize: vertical;
 }
 
 /* Focus state */
-#loginForm input:focus {
+#loginForm input:focus,
+#registerForm input:focus,
+#registerForm textarea:focus,
+#registerForm select:focus {
   box-shadow: 0 0 0 4px rgba(10, 88, 165, 0.12);
   border-color: rgba(255, 255, 255, 0.5);
 }
