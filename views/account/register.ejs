@@ -30,6 +30,7 @@ res.redirect('/') } %>
         type="text"
         name="account_firstname"
         required
+        value="<%= locals.account_firstname %>"
       >
     </div>
     <div>
@@ -39,11 +40,12 @@ res.redirect('/') } %>
         type="text"
         name="account_lastname"
         required
+        value="<%= locals.account_lastname %>"
       >
     </div>
     <div>
       <label for="account_email">Email</label>
-      <input id="account_email" type="email" name="account_email" required >
+      <input id="account_email" type="email" name="account_email" required value="<%= locals.account_email %>">
     </div>
     <div>
       <label for="account_password">Password</label>

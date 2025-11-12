@@ -15,7 +15,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
   <form id="loginForm" action="/account/login" method="post">
     <div>
       <label for="account_email">Email</label>
-      <input id="account_email" type="email" name="account_email" required />
+      <input id="account_email" type="email" name="account_email" required value="<%= locals.account_email %>" />
     </div>
     <div>
       <label for="account_password">Password</label>
