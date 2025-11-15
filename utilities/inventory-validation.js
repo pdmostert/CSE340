@@ -149,4 +149,53 @@ validate.checkNewVehicleData = async (req, res, next) => {
   next();
 };
 
+
+
+/* ******************************
+ * Check data on update and return errors or continue to next function
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const {
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    const classificationSelect = await utilities.buildClassificationList(
+      classification_id
+    );
+    res.render("inventory/edit-inventory", {
+      errors,
+      title: "Edit Vehicle",
+      nav,
+      classificationSelect,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
+    });
+    return;
+  }
+  next();
+};
+
+
+
 module.exports = validate;

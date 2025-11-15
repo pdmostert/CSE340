@@ -17,6 +17,12 @@ router.get(
   utilities.handleErrors(invController.buildByInventoryId)
 );
 
+// route to edit vehicle
+router.get(
+  "/edit/:inventoryId",
+  utilities.handleErrors(invController.buildEditVehicleView)
+);
+
 // Route to trigger intentional 500 error
 router.get("/trigger-error", utilities.handleErrors(invController.buildError));
 
@@ -49,5 +55,18 @@ router.post(
   invValidate.checkNewVehicleData,
   utilities.handleErrors(invController.newVehicle)
 );
+
+// Route to get inventory by classification as JSON
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+// Route to process vehicle update data
+router.post("/update/", 
+invValidate.newVehicleRules(),
+invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory));
+
+
+
+
 
 module.exports = router;
