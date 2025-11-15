@@ -617,7 +617,8 @@ footer .copyright {
 }
 
 #loginForm,
-#registerForm {
+#registerForm, 
+#updateForm {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -625,14 +626,16 @@ footer .copyright {
 }
 
 #loginForm div,
-#registerForm div {
+#registerForm div,
+#updateForm div {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
 #loginForm label,
-#registerForm label {
+#registerForm label,
+#updateForm label {
   color: #ffffff;
   font-weight: 600;
   font-size: 0.95rem;
@@ -646,7 +649,13 @@ footer .copyright {
 #registerForm input[type="text"],
 #registerForm input[type="number"],
 #registerForm textarea,
-#registerForm select {
+#registerForm select,
+#updateForm input[type="email"],
+#updateForm input[type="password"],
+#updateForm input[type="text"],
+#updateForm input[type="number"],
+#updateForm textarea,
+#updateForm select {
   width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
@@ -658,7 +667,8 @@ footer .copyright {
   font-family: Arial, sans-serif;
 }
 
-#registerForm textarea {
+#registerForm textarea,
+#updateForm textarea {
   min-height: 80px;
   resize: vertical;
 }
@@ -667,13 +677,17 @@ footer .copyright {
 #loginForm input:focus,
 #registerForm input:focus,
 #registerForm textarea:focus,
-#registerForm select:focus {
+#registerForm select:focus,
+#updateForm input:focus,
+#updateForm textarea:focus,
+#updateForm select:focus {
   box-shadow: 0 0 0 4px rgba(10, 88, 165, 0.12);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
 #loginForm button[type="submit"],
-#registerForm button[type="submit"] {
+#registerForm button[type="submit"],
+#updateForm button[type="submit"] {
   padding: 10px 16px;
   border-radius: 999px;
   border: none;
@@ -687,7 +701,8 @@ footer .copyright {
 }
 
 #loginForm button[type="submit"]:hover,
-#registerForm button[type="submit"]:hover {
+#registerForm button[type="submit"]:hover,
+#updateForm button[type="submit"]:hover {
   background: rgb(144, 235, 136);
   color: black;
   transform: translateY(-1px);
