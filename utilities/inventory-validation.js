@@ -32,59 +32,58 @@ validate.newVehicleRules = () => {
       .escape()
       .notEmpty()
       .isLength({ min: 3 })
-      .withMessage("Please provide a vehicle make."), // on error this message is sent.
+      .withMessage("Please provide a vehicle make."), 
     // inv_model is required and must be string
     body("inv_model")
       .trim()
       .escape()
       .notEmpty()
       .isLength({ min: 3 })
-      .withMessage("Please provide a vehicle model."), // on error this message is sent.
+      .withMessage("Please provide a vehicle model."), 
     // inv_year is required and must be a valid year
     body("inv_year")
       .trim()
       .notEmpty()
       .isInt({ min: 1886, max: new Date().getFullYear() + 1 })
-      .withMessage("Please provide a valid vehicle year."), // on error this message is sent.
+      .withMessage("Please provide a valid vehicle year."), 
     // classification_id is required and must be a valid id
     body("classification_id")
       .trim()
       .notEmpty()
       .isInt({ min: 1 })
-      .withMessage("Please provide a valid classification."), // on error this message is sent.
+      .withMessage("Please provide a valid classification."), 
     // inv_description is required and must be string
     body("inv_description")
       .trim()
       .notEmpty()
       .isLength({ min: 10 })
-      .withMessage("Please provide a vehicle description."), // on error this message is sent.
+      .withMessage("Please provide a vehicle description."), 
     // image path is required
     body("inv_image")
       .trim()
       .notEmpty()
-      .withMessage("Please provide an image path."), // on error this message is sent.
-    // thumbnail path is required
+      .withMessage("Please provide an image path."), 
     body("inv_thumbnail")
       .trim()
       .notEmpty()
-      .withMessage("Please provide a thumbnail path."), // on error this message is sent.
+      .withMessage("Please provide a thumbnail path."), 
     // inv_price is required and must be a valid decimal
     body("inv_price")
       .trim()
       .notEmpty()
       .isFloat({ min: 0 })
-      .withMessage("Please provide a valid price."), // on error this message is sent.
+      .withMessage("Please provide a valid price."), 
     // inv_miles is required and must be a valid decimal
     body("inv_miles")
       .trim()
       .notEmpty()
       .isInt({ min: 0 })
-      .withMessage("Please provide a valid mileage."), // on error this message is sent.
+      .withMessage("Please provide a valid mileage."), 
     // inv_color is required and must be string
     body("inv_color")
       .trim()
       .notEmpty()
-      .withMessage("Please provide a vehicle color."), // on error this message is sent.
+      .withMessage("Please provide a vehicle color."), 
   ];
 };
 
@@ -97,7 +96,7 @@ validate.checkNewClassificationData = async (req, res, next) => {
     let nav = await utilities.getNav();
     const { classification_name } = req.body;
     res.render("inventory/new-classification", {
-      errors: errors.array(),
+      errors,
       title: "Add New Classification",
       nav,
       classification_name,
