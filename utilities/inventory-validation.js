@@ -14,7 +14,10 @@ validate.newClassificationRules = () => {
       .escape()
       .notEmpty()
       .isLength({ min: 1 })
-      .withMessage("Please provide a classification name."), // on error this message is sent.
+      .matches(/^[a-zA-Z0-9]+$/)
+      .withMessage(
+        "Classification name must contain only letters and numbers, no spaces or special characters."
+      ),
   ];
 };
 
@@ -69,7 +72,7 @@ validate.newVehicleRules = () => {
     body("inv_price")
       .trim()
       .notEmpty()
-      .isFloat({min: 0})
+      .isFloat({ min: 0 })
       .withMessage("Please provide a valid price."), // on error this message is sent.
     // inv_miles is required and must be a valid decimal
     body("inv_miles")
@@ -92,6 +95,7 @@ validate.checkNewClassificationData = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav();
+    const { classification_name } = req.body;
     res.render("inventory/new-classification", {
       errors: errors.array(),
       title: "Add New Classification",
