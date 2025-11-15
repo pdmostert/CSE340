@@ -617,7 +617,7 @@ footer .copyright {
 }
 
 #loginForm,
-#registerForm, 
+#registerForm,
 #updateForm {
   display: flex;
   flex-direction: column;
@@ -683,6 +683,52 @@ footer .copyright {
 #updateForm select:focus {
   box-shadow: 0 0 0 4px rgba(10, 88, 165, 0.12);
   border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Input Validation Styles */
+#loginForm input:valid,
+#registerForm input:valid,
+#registerForm textarea:valid,
+#registerForm select:valid,
+#updateForm input:valid,
+#updateForm textarea:valid,
+#updateForm select:valid {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+#loginForm input:invalid:not(:placeholder-shown),
+#registerForm input:invalid:not(:placeholder-shown),
+#registerForm textarea:invalid:not(:placeholder-shown),
+#registerForm select:invalid:not(:placeholder-shown),
+#updateForm input:invalid:not(:placeholder-shown),
+#updateForm textarea:invalid:not(:placeholder-shown),
+#updateForm select:invalid:not(:placeholder-shown) {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+/* Focus states with validation colors */
+#loginForm input:valid:focus,
+#registerForm input:valid:focus,
+#registerForm textarea:valid:focus,
+#registerForm select:valid:focus,
+#updateForm input:valid:focus,
+#updateForm textarea:valid:focus,
+#updateForm select:valid:focus {
+  box-shadow: 0 0 0 4px rgba(134, 239, 172, 0.2);
+  border-color: #86efac;
+}
+
+#loginForm input:invalid:not(:placeholder-shown):focus,
+#registerForm input:invalid:not(:placeholder-shown):focus,
+#registerForm textarea:invalid:not(:placeholder-shown):focus,
+#registerForm select:invalid:not(:placeholder-shown):focus,
+#updateForm input:invalid:not(:placeholder-shown):focus,
+#updateForm textarea:invalid:not(:placeholder-shown):focus,
+#updateForm select:invalid:not(:placeholder-shown):focus {
+  box-shadow: 0 0 0 4px rgba(252, 165, 165, 0.2);
+  border-color: #fca5a5;
 }
 
 #loginForm button[type="submit"],
