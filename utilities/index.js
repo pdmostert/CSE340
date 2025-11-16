@@ -177,7 +177,7 @@ Util.checkJWTToken = (req, res, next) => {
       process.env.ACCESS_TOKEN_SECRET,
       function (err, accountData) {
         if (err) {
-          req.flash("Please log in");
+          req.flash("notice", "Please log in");
           res.clearCookie("jwt");
           return res.redirect("/account/login");
         }
@@ -192,15 +192,37 @@ Util.checkJWTToken = (req, res, next) => {
 };
 
 /* ****************************************
- *  Check Login
- * ************************************ */
- Util.checkLogin = (req, res, next) => {
+ * Check Login - requires valid JWT
+ **************************************** */
+Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
-    next()
+    next();
   } else {
-    req.flash("notice", "Please log in.")
-    return res.redirect("/account/login")
+    req.flash("notice", "Please log in.");
+    return res.redirect("/account/login");
   }
- }
+};
+
+/* ****************************************
+ * Middleware to check account type for inventory management
+ * Only allows Employee or Admin
+ **************************************** */
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.loggedin) {
+    const accountType = res.locals.accountData.account_type;
+    if (accountType === "Employee" || accountType === "Admin") {
+      next();
+    } else {
+      req.flash(
+        "notice",
+        "You do not have permission to access this resource."
+      );
+      return res.redirect("/account/login");
+    }
+  } else {
+    req.flash("notice", "Please log in with an authorized account.");
+    return res.redirect("/account/login");
+  }
+};
 
 module.exports = Util;

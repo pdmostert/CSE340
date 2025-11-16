@@ -13,6 +13,7 @@ async function buildLogin(req, res, next) {
     title: "Login",
     nav,
     errors: null,
+    account_email: "", // added to repopulate email field user is not logged in
   });
 }
 
@@ -152,10 +153,20 @@ async function buildAccountManagement(req, res, next) {
   });
 }
 
+/* ****************************************
+ *  Process logout
+ * *************************************** */
+async function accountLogout(req, res, next) {
+  res.clearCookie("jwt");
+  req.flash("notice", "You have been logged out.");
+  return res.redirect("/");
+}
+
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   accountLogin,
   buildAccountManagement,
+  accountLogout,
 };

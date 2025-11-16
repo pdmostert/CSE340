@@ -5,7 +5,6 @@
 /* ***********************
  * Require Statements
  *************************/
-const cookieParser = require("cookie-parser");
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
@@ -18,6 +17,7 @@ const session = require("express-session");
 const pool = require("./database/");
 const accountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 /* ***********************
  * Middleware
@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Cookie Parser Middleware
 app.use(cookieParser());
 
-// JWT Token Middleware
+// Check JWT token validity on every request
 app.use(utilities.checkJWTToken);
 
 // Custom Middleware to set local variables
