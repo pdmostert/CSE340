@@ -52,6 +52,13 @@ app.use(cookieParser());
 // JWT Token Middleware
 app.use(utilities.checkJWTToken);
 
+// Custom Middleware to set local variables
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false;
+  res.locals.accountData = req.session.accountData || null;
+  next();
+});
+
 /* ***********************
  * View Engine and Templates
  *************************/

@@ -118,7 +118,11 @@ async function accountLogin(req, res) {
           maxAge: 3600 * 1000,
         });
       }
-      return res.redirect("/account/");
+      req.session.loggedin = true;
+      req.session.accountData = accountData;
+      req.session.save(() => {
+        res.redirect("/account/");
+      });
     } else {
       req.flash(
         "message notice",
