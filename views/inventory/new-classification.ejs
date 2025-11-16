@@ -11,12 +11,12 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 </ul>
 <% } %>
 
-<div id="registerFormContainer">
+<div class="formContainer">
   <div>
     <p>All fields are required.</p>
     <p>Name must be alphabetic characters only.</p>
   </div>
-  <form id="registerForm" action="/inv/new-classification" method="post">
+  <form class="authForm" action="/inv/new-classification" method="post">
     <div>
       <label for="classification_name">Classification Name:</label>
       <input

@@ -604,9 +604,12 @@ footer .copyright {
   }
 }
 
-/* Login / Auth form / Registration Form */
-#loginFormContainer,
-#registerFormContainer {
+/* ========================================
+   CONSOLIDATED FORM STYLES
+   ======================================== */
+
+/* Form Container */
+.formContainer {
   max-width: 380px;
   margin: 48px auto;
   padding: 24px;
@@ -616,46 +619,34 @@ footer .copyright {
   box-shadow: 0 8px 20px rgba(10, 88, 165, 0.12);
 }
 
-#loginForm,
-#registerForm,
-#updateForm {
+/* Form Structure */
+.authForm {
   display: flex;
   flex-direction: column;
   gap: 14px;
   align-items: stretch;
 }
 
-#loginForm div,
-#registerForm div,
-#updateForm div {
+.authForm div {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-#loginForm label,
-#registerForm label,
-#updateForm label {
+/* Form Labels */
+.authForm label {
   color: #ffffff;
   font-weight: 600;
   font-size: 0.95rem;
 }
 
-#loginForm input[type="email"],
-#loginForm input[type="password"],
-#loginForm input[type="text"],
-#registerForm input[type="email"],
-#registerForm input[type="password"],
-#registerForm input[type="text"],
-#registerForm input[type="number"],
-#registerForm textarea,
-#registerForm select,
-#updateForm input[type="email"],
-#updateForm input[type="password"],
-#updateForm input[type="text"],
-#updateForm input[type="number"],
-#updateForm textarea,
-#updateForm select {
+/* Form Inputs */
+.authForm input[type="email"],
+.authForm input[type="password"],
+.authForm input[type="text"],
+.authForm input[type="number"],
+.authForm textarea,
+.authForm select {
   width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
@@ -667,73 +658,51 @@ footer .copyright {
   font-family: Arial, sans-serif;
 }
 
-#registerForm textarea,
-#updateForm textarea {
+.authForm textarea {
   min-height: 80px;
   resize: vertical;
 }
 
-/* Focus state */
-#loginForm input:focus,
-#registerForm input:focus,
-#registerForm textarea:focus,
-#registerForm select:focus,
-#updateForm input:focus,
-#updateForm textarea:focus,
-#updateForm select:focus {
+/* Focus State */
+.authForm input:focus,
+.authForm textarea:focus,
+.authForm select:focus {
   box-shadow: 0 0 0 4px rgba(10, 88, 165, 0.12);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Input Validation Styles */
-#loginForm input:valid,
-#registerForm input:valid,
-#registerForm textarea:valid,
-#registerForm select:valid,
-#updateForm input:valid,
-#updateForm textarea:valid,
-#updateForm select:valid {
+/* Valid Input States */
+.authForm input:valid,
+.authForm textarea:valid,
+.authForm select:valid {
   border-color: #86efac;
   background: #f0fdf4;
 }
 
-#loginForm input:invalid:not(:placeholder-shown),
-#registerForm input:invalid:not(:placeholder-shown),
-#registerForm textarea:invalid:not(:placeholder-shown),
-#registerForm select:invalid:not(:placeholder-shown),
-#updateForm input:invalid:not(:placeholder-shown),
-#updateForm textarea:invalid:not(:placeholder-shown),
-#updateForm select:invalid:not(:placeholder-shown) {
+.authForm input:invalid:not(:placeholder-shown),
+.authForm textarea:invalid:not(:placeholder-shown),
+.authForm select:invalid:not(:placeholder-shown) {
   border-color: #fca5a5;
   background: #fef2f2;
 }
 
-/* Focus states with validation colors */
-#loginForm input:valid:focus,
-#registerForm input:valid:focus,
-#registerForm textarea:valid:focus,
-#registerForm select:valid:focus,
-#updateForm input:valid:focus,
-#updateForm textarea:valid:focus,
-#updateForm select:valid:focus {
+/* Focus with Validation */
+.authForm input:valid:focus,
+.authForm textarea:valid:focus,
+.authForm select:valid:focus {
   box-shadow: 0 0 0 4px rgba(134, 239, 172, 0.2);
   border-color: #86efac;
 }
 
-#loginForm input:invalid:not(:placeholder-shown):focus,
-#registerForm input:invalid:not(:placeholder-shown):focus,
-#registerForm textarea:invalid:not(:placeholder-shown):focus,
-#registerForm select:invalid:not(:placeholder-shown):focus,
-#updateForm input:invalid:not(:placeholder-shown):focus,
-#updateForm textarea:invalid:not(:placeholder-shown):focus,
-#updateForm select:invalid:not(:placeholder-shown):focus {
+.authForm input:invalid:not(:placeholder-shown):focus,
+.authForm textarea:invalid:not(:placeholder-shown):focus,
+.authForm select:invalid:not(:placeholder-shown):focus {
   box-shadow: 0 0 0 4px rgba(252, 165, 165, 0.2);
   border-color: #fca5a5;
 }
 
-#loginForm button[type="submit"],
-#registerForm button[type="submit"],
-#updateForm button[type="submit"] {
+/* Submit Button */
+.authForm button[type="submit"] {
   padding: 10px 16px;
   border-radius: 999px;
   border: none;
@@ -746,24 +715,229 @@ footer .copyright {
   min-width: 140px;
 }
 
-#loginForm button[type="submit"]:hover,
-#registerForm button[type="submit"]:hover,
-#updateForm button[type="submit"]:hover {
+.authForm button[type="submit"]:hover {
   background: rgb(144, 235, 136);
   color: black;
   transform: translateY(-1px);
 }
 
-#loginFormContainer #register {
-  margin: 6px 0 0;
-  text-align: center;
+.authForm button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form Helper Text */
+.formContainer p {
+  margin: 6px 0;
   color: #ffffff;
   font-size: 0.95rem;
 }
 
-#loginFormContainer #register a {
+/* Register Link (on login page) */
+.formContainer #register {
+  text-align: center;
+}
+
+.formContainer #register a {
   color: #ffffff;
   text-decoration: underline;
   margin-left: 6px;
   font-weight: 600;
+}
+
+/* ========================================
+   INVENTORY MANAGEMENT STYLES
+   ======================================== */
+
+/* Management Links - Button Style */
+.inventory-management-links {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.inventory-management-links li {
+  margin: 0;
+}
+
+.inventory-management-links a {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--primary-color);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 200ms ease;
+  box-shadow: 0 2px 8px rgba(10, 88, 165, 0.2);
+}
+
+.inventory-management-links a:hover {
+  background: #3d8ad9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 88, 165, 0.3);
+}
+
+.inventory-management-links a:active {
+  transform: translateY(0);
+}
+
+/* Classification Select Dropdown */
+#classificationList {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0f172a;
+  background: #ffffff;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: all 200ms ease;
+  box-shadow: 0 2px 6px rgba(10, 88, 165, 0.1);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230a58a5' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+#classificationList:hover {
+  border-color: #3d8ad9;
+  box-shadow: 0 4px 10px rgba(10, 88, 165, 0.15);
+}
+
+#classificationList:focus {
+  border-color: #3d8ad9;
+  box-shadow: 0 0 0 4px rgba(10, 88, 165, 0.12);
+}
+
+#classificationList option {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+#classificationList option:first-child {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Inventory Display Table */
+#inventoryDisplay {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#inventoryDisplay thead {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+#inventoryDisplay thead th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#inventoryDisplay tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 150ms ease;
+}
+
+#inventoryDisplay tbody tr:hover {
+  background: #f8fafc;
+}
+
+#inventoryDisplay tbody tr:last-child {
+  border-bottom: none;
+}
+
+#inventoryDisplay tbody td {
+  padding: 1rem;
+  color: #334155;
+}
+
+#inventoryDisplay tbody td:first-child {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Table Action Links - Button Style */
+#inventoryDisplay a {
+  display: inline-block;
+  padding: 6px 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 180ms ease;
+  text-align: center;
+  min-width: 70px;
+}
+
+#inventoryDisplay a[href*="edit"] {
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #93c5fd;
+}
+
+#inventoryDisplay a[href*="edit"]:hover {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+#inventoryDisplay a[href*="delete"] {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+#inventoryDisplay a[href*="delete"]:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #b91c1c;
+}
+
+/* Responsive Table */
+@media screen and (max-width: 768px) {
+  #classificationList {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .inventory-management-links {
+    flex-direction: column;
+  }
+
+  .inventory-management-links a {
+    text-align: center;
+  }
+
+  #inventoryDisplay {
+    font-size: 0.9rem;
+  }
+
+  #inventoryDisplay thead th,
+  #inventoryDisplay tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  #inventoryDisplay a {
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    min-width: 60px;
+  }
 }

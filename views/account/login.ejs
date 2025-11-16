@@ -3,8 +3,7 @@
 <h1><%= title %></h1>
 <% } else { /* If no title was provided, redirect back to the home page. This
 keeps the view from rendering when required context isn't available. */
-res.redirect('/') } %> <%- messages() %> 
-<% if (errors) { %>
+res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 <ul class="notice">
   <% errors.array().forEach(error => { %>
   <li><%= error.msg %></li>
@@ -12,11 +11,17 @@ res.redirect('/') } %> <%- messages() %>
 </ul>
 <% } %>
 
-<div id="loginFormContainer">
-  <form id="loginForm" action="/account/login" method="post">
+<div class="formContainer">
+  <form class="authForm" action="/account/login" method="post">
     <div>
       <label for="account_email">Email</label>
-      <input id="account_email" type="email" name="account_email" required value="<%= locals.account_email %>" />
+      <input
+        id="account_email"
+        type="email"
+        name="account_email"
+        required
+        value="<%= locals.account_email %>"
+      />
     </div>
     <div>
       <label for="account_password">Password</label>

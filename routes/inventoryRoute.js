@@ -23,6 +23,10 @@ router.get(
   utilities.handleErrors(invController.buildEditVehicleView)
 );
 
+
+
+
+
 // Route to trigger intentional 500 error
 router.get("/trigger-error", utilities.handleErrors(invController.buildError));
 
@@ -64,6 +68,18 @@ router.post("/update/",
 invValidate.newVehicleRules(),
 invValidate.checkUpdateData,
   utilities.handleErrors(invController.updateInventory));
+
+
+
+// route to build vehicle delete view
+router.get(
+  "/delete/:inventoryId",
+  utilities.handleErrors(invController.buildDeleteVehicleView)
+);
+
+// Route to process vehicle deletion
+router.post("/delete/", 
+  utilities.handleErrors(invController.deleteInventory));
 
 
 

@@ -3,26 +3,20 @@
 <h1><%= title %></h1>
 <% } else { /* If no title was provided, redirect back to the home page. This
 keeps the view from rendering when required context isn't available. */
-res.redirect('/') } %> 
-<%- messages() %>
-
-<% if (errors) { %>
-  <ul class="notice">
- <% errors.array().forEach(error => { %>
-   <li><%= error.msg %></li>
-<%  }) %>
- </ul>
+res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
 <% } %>
 
-
-<div id="registerFormContainer">
+<div class="formContainer">
   <div>
     <h2>Register an Account</h2>
-    <p>
-      All fields are required
-    </p>
+    <p>All fields are required</p>
   </div>
-  <form id="registerForm" action="/account/register" method="post">
+  <form class="authForm" action="/account/register" method="post">
     <div>
       <label for="account_firstname">First Name</label>
       <input
@@ -31,7 +25,7 @@ res.redirect('/') } %>
         name="account_firstname"
         required
         value="<%= locals.account_firstname %>"
-      >
+      />
     </div>
     <div>
       <label for="account_lastname">Last Name</label>
@@ -41,11 +35,17 @@ res.redirect('/') } %>
         name="account_lastname"
         required
         value="<%= locals.account_lastname %>"
-      >
+      />
     </div>
     <div>
       <label for="account_email">Email</label>
-      <input id="account_email" type="email" name="account_email" required value="<%= locals.account_email %>">
+      <input
+        id="account_email"
+        type="email"
+        name="account_email"
+        required
+        value="<%= locals.account_email %>"
+      />
     </div>
     <div>
       <label for="account_password">Password</label>
@@ -56,11 +56,12 @@ res.redirect('/') } %>
         required
         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
         title="Password must be at least 12 characters long and contain at least 1 uppercase letter, 1 number, and 1 special character."
-      >
+      />
     </div>
     <div>
       <p>
-        Passwords must be at least 12 characters and contain at least 1 uppercase letter, 1 number, and 1 special character.
+        Passwords must be at least 12 characters and contain at least 1
+        uppercase letter, 1 number, and 1 special character.
       </p>
     </div>
     <button type="submit">Register</button>

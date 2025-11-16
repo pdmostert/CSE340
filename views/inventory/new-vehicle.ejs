@@ -11,11 +11,11 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 </ul>
 <% } %>
 
-<div id="registerFormContainer">
+<div class="formContainer">
   <div>
     <p>All fields are required.</p>
   </div>
-  <form id="registerForm" action="/inv/new-vehicle" method="post">
+  <form class="authForm" action="/inv/new-vehicle" method="post">
     <div>
       <label for="classification_id">Classification:</label>
       <%- classificationSelect %>

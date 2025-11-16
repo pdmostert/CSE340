@@ -11,17 +11,17 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 </ul>
 <% } %>
 
-<div id="registerFormContainer">
+<div class="formContainer">
   <div>
     <p>All fields are required.</p>
   </div>
-  <form id="updateForm" action="/inv/update" method="post">
+  <form class="authForm" action="/inv/update" method="post">
     <div>
       <label for="classification_id">Classification:</label>
       <%- classificationSelect %>
     </div>
 
-     <div>
+    <div>
       <label for="inv_make">Make:</label>
       <input
         type="text"
@@ -137,7 +137,8 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 
     <button type="submit" disabled>Update Vehicle</button>
 
-    <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %> />
+    <input type="hidden" name="inv_id" <% if(locals.inv_id) { % /> value="<%=
+    locals.inv_id %>" <% } %> />
   </form>
 </div>
 
