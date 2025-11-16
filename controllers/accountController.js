@@ -158,8 +158,40 @@ async function buildAccountManagement(req, res, next) {
  * *************************************** */
 async function accountLogout(req, res, next) {
   res.clearCookie("jwt");
-  req.flash("notice", "You have been logged out.");
-  return res.redirect("/");
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+    }
+    res.clearCookie("sessionId"); // Clear the session cookie (matches the name in server.js)
+    res.redirect("/");
+  });
+}
+
+/* ****************************************
+ * Build update account view
+ * *************************************** */
+async function buildUpdateAccount(req, res, next) {
+  let nav = await utilities.getNav();
+  const accountId = parseInt(req.params.accountId);
+
+  // Verify that the logged-in user matches the account being updated
+  if (
+    req.session.accountData &&
+    req.session.accountData.account_id === accountId
+  ) {
+    res.render("account/update", {
+      title: "Update Account Information",
+      nav,
+      errors: null,
+      account_firstname: req.session.accountData.account_firstname,
+      account_lastname: req.session.accountData.account_lastname,
+      account_email: req.session.accountData.account_email,
+      account_id: accountId,
+    });
+  } else {
+    req.flash("notice", "Please log in to update your account.");
+    res.redirect("/account/login");
+  }
 }
 
 module.exports = {
@@ -169,4 +201,5 @@ module.exports = {
   accountLogin,
   buildAccountManagement,
   accountLogout,
+  buildUpdateAccount,
 };

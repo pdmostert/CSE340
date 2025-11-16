@@ -38,4 +38,10 @@ router.post(
 // Logout route
 router.get("/logout", utilities.handleErrors(accountController.accountLogout));
 
+// Route to display update account form
+router.get(
+  "/update/:accountId",
+  utilities.handleErrors(accountController.buildUpdateAccount)
+);
+
 module.exports = router;
