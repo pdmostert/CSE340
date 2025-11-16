@@ -41,7 +41,26 @@ router.get("/logout", utilities.handleErrors(accountController.accountLogout));
 // Route to display update account form
 router.get(
   "/update/:accountId",
+  utilities.checkLogin,
   utilities.handleErrors(accountController.buildUpdateAccount)
+);
+
+// Process account information update
+router.post(
+  "/update",
+  utilities.checkLogin,
+  regValidate.updateAccountRules(),
+  regValidate.checkUpdateData,
+  utilities.handleErrors(accountController.updateAccount)
+);
+
+// Process password change
+router.post(
+  "/change-password",
+  utilities.checkLogin,
+  regValidate.passwordChangeRules(),
+  regValidate.checkPasswordData,
+  utilities.handleErrors(accountController.changePassword)
 );
 
 module.exports = router;
