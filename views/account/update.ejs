@@ -10,9 +10,9 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 </ul>
 <% } %>
 
-<div class="form-container">
+<div class="formContainer">
   <h2>Update Account Information</h2>
-  <form id="updateForm" action="/account/update" method="post">
+  <form id="updateForm" class="authForm" action="/account/update" method="post">
     <label for="account_firstname">First Name:</label>
     <input
       type="text"
@@ -49,13 +49,18 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
   </form>
 </div>
 
-<div class="form-container">
+<div class="formContainer">
   <h2>Change Password</h2>
   <p>
     Passwords must be at least 12 characters and contain at least 1 uppercase, 1
     lowercase, 1 number and 1 special character.
   </p>
-  <form id="passwordForm" action="/account/change-password" method="post">
+  <form
+    id="passwordForm"
+    class="authForm"
+    action="/account/change-password"
+    method="post"
+  >
     <label for="account_password">New Password:</label>
     <input
       type="password"
