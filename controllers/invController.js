@@ -266,8 +266,8 @@ invCont.updateInventory = async function (req, res, next) {
 /* ***************************
  *  Build Delete Vehicle View
  * ************************** */
-invCont.buildDeleteVehicleView = async function (req, res, next) {
-  const inventory_id = parseInt(req.params.inventoryId);
+invCont.buildDeleteConfirmView = async function (req, res, next) {
+  const inventory_id = parseInt(req.params.inv_id);
   let nav = await utilities.getNav();
   const itemData = await invModel.getInventoryByInventoryId(inventory_id);
   const itemName = `${itemData.inv_make} ${itemData.inv_model}`;

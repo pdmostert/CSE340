@@ -656,6 +656,8 @@ footer .copyright {
   font-size: 1rem;
   outline: none;
   font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .authForm textarea {
@@ -743,6 +745,10 @@ footer .copyright {
   text-decoration: underline;
   margin-left: 6px;
   font-weight: 600;
+}
+
+fieldset {
+  margin-top: 10px;
 }
 
 /* ========================================
