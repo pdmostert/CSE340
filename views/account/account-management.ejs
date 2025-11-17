@@ -16,7 +16,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 <% if (accountData) { %>
 <h2>Welcome <%= accountData.account_firstname %></h2>
 
-<p>
+<p class="inventory-management-links">
   <a
     href="/account/update/<%= accountData.account_id %>"
     title="Update Account Information"
@@ -27,7 +27,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 <% if (accountData.account_type === 'Employee' || accountData.account_type ===
 'Admin') { %>
 <h3>Inventory Management</h3>
-<p>
+<p class="inventory-management-links">
   <a href="/inv" title="Manage Inventory">Manage Inventory</a>
 </p>
 <% } %> <% } else { %>
