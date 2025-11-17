@@ -20,8 +20,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
       name="account_firstname"
       autocomplete="given-name"
       required
-      value="<%= locals.account_firstname %>"
-    />
+      value="<%= locals.account_firstname %>" >
 
     <label for="account_lastname">Last Name:</label>
     <input
@@ -30,8 +29,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
       name="account_lastname"
       autocomplete="family-name"
       required
-      value="<%= locals.account_lastname %>"
-    />
+      value="<%= locals.account_lastname %>" >
 
     <label for="account_email">Email Address:</label>
     <input
@@ -40,10 +38,9 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
       name="account_email"
       autocomplete="email"
       required
-      value="<%= locals.account_email %>"
-    />
+      value="<%= locals.account_email %>" >
 
-    <input type="hidden" name="account_id" value="<%= locals.account_id %>" />
+    <input type="hidden" name="account_id" value="<%= locals.account_id %>" >
 
     <button type="submit" class="btn">Update Account</button>
   </form>
@@ -68,11 +65,10 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
       name="account_password"
       autocomplete="new-password"
       required
-      pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$"
-    />
+      pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$" >
     <span id="pswdBtn">Show Password</span>
 
-    <input type="hidden" name="account_id" value="<%= locals.account_id %>" />
+    <input type="hidden" name="account_id" value="<%= locals.account_id %>" >
 
     <button type="submit" class="btn">Change Password</button>
   </form>

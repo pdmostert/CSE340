@@ -17,7 +17,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
   </div>
   <form class="authForm" action="/inv/update" method="post">
     <div>
-      <label for="classification_id">Classification:</label>
+      <label for="classificationList">Classification:</label>
       <%- classificationSelect %>
     </div>
 
@@ -30,8 +30,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
         minlength="3"
         required
         value="<%= locals.inv_make %>"
-        placeholder="Min of 3 characters"
-      />
+        placeholder="Min of 3 characters" >
     </div>
 
     <div>
@@ -43,8 +42,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
         minlength="3"
         required
         value="<%= locals.inv_model %>"
-        placeholder="Min of 3 characters"
-      />
+        placeholder="Min of 3 characters" >
     </div>
 
     <div>
@@ -67,8 +65,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
         id="inv_image"
         name="inv_image"
         required
-        value="<%= typeof inv_image !== 'undefined' ? inv_image : '/images/vehicles/no-image.png' %>"
-      />
+        value="<%= typeof inv_image !== 'undefined' ? inv_image : '/images/vehicles/no-image.png' %>" >
     </div>
 
     <div>
@@ -78,8 +75,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
         id="inv_thumbnail"
         name="inv_thumbnail"
         required
-        value="<%= typeof inv_thumbnail !== 'undefined' ? inv_thumbnail : '/images/vehicles/no-image-tn.png' %>"
-      />
+        value="<%= typeof inv_thumbnail !== 'undefined' ? inv_thumbnail : '/images/vehicles/no-image-tn.png' %>" >
     </div>
 
     <div>
@@ -92,8 +88,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
         min="0"
         required
         value="<%= locals.inv_price %>"
-        placeholder="decimal or integer"
-      />
+        placeholder="decimal or integer" >
     </div>
 
     <div>
@@ -102,13 +97,11 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
         type="number"
         id="inv_year"
         name="inv_year"
-        minlength="4"
         min="1886"
         max="<%= new Date().getFullYear() %>"
         required
         value="<%= locals.inv_year %>"
-        placeholder="4-digit year"
-      />
+        placeholder="4-digit year" >
     </div>
 
     <div>
@@ -120,8 +113,7 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
         min="0"
         required
         value="<%= locals.inv_miles %>"
-        placeholder="digits only"
-      />
+        placeholder="digits only" >
     </div>
 
     <div>
@@ -131,14 +123,12 @@ res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
         id="inv_color"
         name="inv_color"
         required
-        value="<%= locals.inv_color %>"
-      />
+        value="<%= locals.inv_color %>" >
     </div>
 
     <button type="submit" disabled>Update Vehicle</button>
 
-    <input type="hidden" name="inv_id" <% if(locals.inv_id) { % /> value="<%=
-    locals.inv_id %>" <% } %> />
+    <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%=locals.inv_id %>" <% } %>>
   </form>
 </div>
 
