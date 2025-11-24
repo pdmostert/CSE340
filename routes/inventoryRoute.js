@@ -4,6 +4,7 @@ const router = new express.Router();
 const invController = require("../controllers/invController");
 const utilities = require("../utilities");
 const invValidate = require("../utilities/inventory-validation");
+const commentValidate = require('../utilities/comment-validation')
 
 // Route to build inventory by classification view
 router.get(
@@ -113,5 +114,17 @@ router.get(
   utilities.checkAccountType,
   utilities.handleErrors(invController.getInventoryJSON)
 );
+
+// Route to process adding a comment (requires authentication)
+router.post(
+  "/add-comment",
+  utilities.checkLogin,
+  commentValidate.commentRules(),
+  commentValidate.checkCommentData,
+  utilities.handleErrors(invController.addComment)
+)
+
+
+
 
 module.exports = router;

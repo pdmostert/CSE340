@@ -1,6 +1,7 @@
 const e = require("connect-flash");
 const invModel = require("../models/inventory-model");
 const utilities = require("../utilities/");
+const commentModel = require("../models/comment-model");
 
 const invCont = {};
 
@@ -21,20 +22,53 @@ invCont.buildByClassificationId = async function (req, res, next) {
 };
 
 /* ***************************
- *  Build individual vehicle view
+ *  Build vehicle detail view
  * ************************** */
 invCont.buildByInventoryId = async function (req, res, next) {
-  const inventory_id = req.params.inventoryId;
-  const data = await invModel.getInventoryByInventoryId(inventory_id);
+  const inv_id = req.params.inventoryId;
+  const data = await invModel.getInventoryByInventoryId(inv_id);
   const vehicleView = await utilities.buildVehicleView(data);
-  let nav = await utilities.getNav();
-  const vehicle = data;
+  const comments = await commentModel.getCommentsByInventoryId(inv_id);
+  const commentsView = await utilities.buildCommentsView(
+    comments,
+    res.locals.accountData,
+    inv_id
+  );
 
+  let nav = await utilities.getNav();
+  const vehicleName = `${data.inv_year} ${data.inv_make} ${data.inv_model}`;
   res.render("./inventory/vehicle", {
-    title: vehicle.inv_make + " " + vehicle.inv_model,
+    title: vehicleName,
     nav,
     vehicleView,
+    commentsView,
+    inv_id,
+    errors: null,
+    comment_text: "",
   });
+};
+
+/* ***************************
+ *  Process Add Comment
+ * ************************** */
+invCont.addComment = async function (req, res) {
+  let nav = await utilities.getNav();
+  const { inv_id, comment_text } = req.body;
+  const account_id = res.locals.accountData.account_id;
+
+  const commentResult = await commentModel.addComment(
+    inv_id,
+    account_id,
+    comment_text
+  );
+
+  if (commentResult) {
+    req.flash("notice", `Comment added successfully.`);
+    res.redirect(`/inv/detail/${inv_id}`);
+  } else {
+    req.flash("notice", "Sorry, adding the comment failed.");
+    res.status(501).redirect(`/inv/detail/${inv_id}`);
+  }
 };
 
 /* ***************************

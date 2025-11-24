@@ -225,4 +225,61 @@ Util.checkAccountType = (req, res, next) => {
   }
 };
 
+/* **************************************
+ * Build the comments view HTML
+ * ************************************ */
+Util.buildCommentsView = async function (comments, accountData, inv_id) {
+  let commentsHTML = '<div class="comments-section">';
+  commentsHTML += "<h2>Customer Comments</h2>";
+
+  if (comments && comments.length > 0) {
+    commentsHTML += '<ul class="comments-list">';
+    comments.forEach((comment) => {
+      const commentDate = new Date(comment.comment_date).toLocaleDateString(
+        "en-US",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }
+      );
+      commentsHTML += `
+        <li class="comment-item">
+          <div class="comment-header">
+            <strong>${comment.account_firstname} ${comment.account_lastname}</strong>
+            <span class="comment-date">${commentDate}</span>
+          </div>
+          <p class="comment-text">${comment.comment_text}</p>
+        </li>`;
+    });
+    commentsHTML += "</ul>";
+  } else {
+    commentsHTML += "<p>No comments yet. Be the first to comment!</p>";
+  }
+
+  // Add comment form only if user is logged in
+  if (accountData) {
+    commentsHTML += `
+      <div class="add-comment-form">
+      <h3>Add Your Comment</h3>
+      <form action="/inv/add-comment" method="post" id="commentForm">
+       <label for="comment_text">Add Comment</label>
+          <textarea name="comment_text" id="comment_text" required 
+                    placeholder="Share your thoughts about this vehicle..." 
+                    maxlength="1000"></textarea>
+          <input type="hidden" name="inv_id" id="inv_id" value="${inv_id}">
+          <button type="submit" class="submit-btn">Submit Comment</button>
+        </form>
+      </div>`;
+  } else {
+    commentsHTML += `
+      <div class="login-prompt">
+        <p><a href="/account/login">Please log in</a> to add a comment.</p>
+      </div>`;
+  }
+
+  commentsHTML += "</div>";
+  return commentsHTML;
+};
+
 module.exports = Util;

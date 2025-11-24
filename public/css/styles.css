@@ -947,3 +947,248 @@ fieldset {
     min-width: 60px;
   }
 }
+
+/* ======================================
+   COMMENTS SECTION STYLING
+   ====================================== */
+
+.comments-section {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comments-section h2 {
+  color: #333;
+  border-bottom: 3px solid #4c96d7;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.comments-section h3 {
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Comments List */
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.comment-item {
+  background-color: #f9f9f9;
+  border-left: 4px solid #4c96d7;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.comment-item:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.comment-header strong {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.comment-date {
+  color: #666;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.comment-text {
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+/* Add Comment Form */
+.add-comment-form {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.add-comment-form h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+#commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#comment_text {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+#comment_text:focus {
+  outline: none;
+  border-color: #4c96d7;
+  box-shadow: 0 0 0 3px rgba(76, 150, 215, 0.1);
+}
+
+#comment_text::placeholder {
+  color: #999;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #3a7bc8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Login Prompt */
+.login-prompt {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.login-prompt p {
+  margin: 0;
+  color: #856404;
+}
+
+.login-prompt a {
+  color: #4c96d7;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-prompt a:hover {
+  color: #3a7bc8;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .comments-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .comment-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comment-date {
+    align-self: flex-start;
+  }
+
+  #comment_text {
+    min-height: 100px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comments-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+  }
+
+  .comments-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .comment-item {
+    padding: 1rem;
+  }
+
+  .add-comment-form {
+    padding: 1rem;
+  }
+}
+
+/* ======================================
+   COMMENTS FORM VALIDATION STYLING
+   ====================================== */
+
+/* Valid state */
+#comment_text:valid {
+  border-color: #28a745;
+}
+
+#comment_text:valid:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+/* Invalid state */
+#comment_text:invalid {
+  border-color: #dc3545;
+}
+
+#comment_text:invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+/* Optional: Show invalid only after user has interacted */
+#comment_text:not(:placeholder-shown):invalid {
+  border-color: #dc3545;
+  background-color: #fff5f5;
+}
+
+#comment_text:not(:placeholder-shown):valid {
+  border-color: #28a745;
+  background-color: #f0fff4;
+}
